@@ -3,7 +3,7 @@
 
 # How to use this
 
-Download this project, upload "DeploySinatraApp.json" to AWS Cloudforamtion to create a stack. After the stack is created, the sinatra app will run on port 8080
+Download this project, upload "DeploySinatraApp.json" to AWS Cloudforamtion to create a stack. After the stack is created, the sinatra app will run on port 80
 
 # Note
 
@@ -26,12 +26,10 @@ Its configuration-as-code feature enable users to check in templates into versio
 
 # Future Improvements
 
-1.The app runs on port 8080, it should be on port 80. This is the first time deploying a Ruby app. When Ruby environment is installed on root, there will be warning suggesting that it should not be installed on root. While it is installed on ec2-user, ec2-user do not have access to port 80
+1.Introduce AWS Auto Scaling Groups and load balancer
 
-2.Introduce AWS Auto Scaling Groups and load balancer
+2.Implement this in Ansible as ansible is more flexible. It supports more cloud platforms while CloudFormation is only for AWS. 
 
-3.Implement this in Ansible as ansible is more flexible. It supports more cloud platforms while CloudFormation is only for AWS. 
-
-4.Introduce Docker as it is more cost-effective and more efficient with regards to CI and configurations.
+3.Introduce Docker as it is more cost-effective and more efficient with regards to CI and configurations.
 
 
