@@ -1,7 +1,7 @@
 {
   "AWSTemplateFormatVersion" : "2010-09-09",
   
-  "Description" : "AWS CloudFormation Templateipts to install the packages and files necessary to deploy a Sinatra application.",
+  "Description" : "AWS CloudFormation Template：to install the packages and files necessary to deploy a Sinatra application.",
   
   "Parameters" : {
       
@@ -254,10 +254,10 @@
                     "\n",
                     [
                       "#!/bin/bash",
-					  "sudo su - ec2-user",
-                      "git clone https://github.com/rea-cruitment/simple-sinatra-app.git",
-                      "cd simple-sinatra-app",
-                      "bundle install",
+					  "sudo su - ec2-user\n",
+                      "git clone https://github.com/rea-cruitment/simple-sinatra-app.git\n",
+                      "cd simple-sinatra-app\n",
+                      "bundle install\n",
                       "bundle exec rackup -p 8080 &"
                     ]
                   ]
@@ -296,11 +296,6 @@
           "         --resource WebServer ",
           "         --region ", { "Ref" : "AWS::Region" }, "\n"
         ]]}}        
-      },
-      "CreationPolicy" : {
-        "ResourceSignal" : {
-          "Timeout" : "PT30M"
-        }
       }
     },
     
@@ -319,7 +314,7 @@
   "Outputs" : {
     "WebsiteURL" : {
       "Value" : { "Fn::Join" : ["", ["http://", { "Fn::GetAtt" : [ "WebServer", "PublicDnsName" ]}, "/notes" ]] },
-      "Description" : "URL for newly created Rails application"
+      "Description" : "URL for newly created Sinatra application"
     }
   }
 }
