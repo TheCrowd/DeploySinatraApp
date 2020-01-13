@@ -225,24 +225,23 @@
                     "\n",
                     [
                       "#!/bin/bash",
-					  "sudo su - ec2-user",
                       "curl -sSL https://get.rvm.io | bash",
-                      "source /home/ec2-user/.rvm/scripts/rvm",
+                      "source /etc/profile.d/rvm.sh",
                       "rvm install 2.5.0",
                       "rvm --default use 2.5.0",
                       "gem install rails",
-					  "gem install bundler"
+                      "gem install bundler"
                     ]
                   ]
                 },
                 "mode": "000755",
-                "owner": "ec2-user",
-                "group": "ec2-user"
+                "owner": "root",
+                "group": "root"
               }
             },
 			"commands": {
               "01_install_ruby": {
-                "command": "su - ec2-user -c '/tmp/install_ruby > /home/ec2-user/install_ruby.log'"
+                "command": "/tmp/install_ruby > /home/ec2-user/install_ruby.log"
               }
             }
 		  },
@@ -254,22 +253,25 @@
                     "\n",
                     [
                       "#!/bin/bash",
-					  "sudo su - ec2-user\n",
-                      "git clone https://github.com/rea-cruitment/simple-sinatra-app.git\n",
-                      "cd simple-sinatra-app\n",
-                      "bundle install\n",
-                      "bundle exec rackup -p 8080 &"
+					  "git clone https://github.com/rea-cruitment/simple-sinatra-app.git",
+					  "source /etc/profile.d/rvm.sh\n",
+					  "rvm use 2.5.0\n",
+					  "export HOME=/home/ec2-user\n",
+					  "export PATH=$PATH:/usr/local/rvm/gems/ruby-2.5.0/bin\n",
+                      "cd /simple-sinatra-app",
+                      "bundle install",
+                      "bundle exec rackup -p 80 &"
                     ]
                   ]
                 },
                 "mode": "000755",
-                "owner": "ec2-user",
-                "group": "ec2-user"
+                "owner": "root",
+                "group": "root"
               }
             },		    
 		    "commands":{
 			    "01_deploy":{
-					"command" : "su - ec2-user -c '/tmp/deploy_application > /home/ec2-user/deploy.log'"
+					"command" : "/tmp/deploy_application > /home/ec2-user/deploy.log"
 				}			   	   
 			}
 		  }
