@@ -260,7 +260,7 @@
 					  "export PATH=$PATH:/usr/local/rvm/gems/ruby-2.5.0/bin\n",
                       "cd /simple-sinatra-app",
                       "bundle install",
-                      "bundle exec rackup -p 80 &"
+                      "bundle exec rackup -p 80 -D"
                     ]
                   ]
                 },
@@ -272,7 +272,7 @@
 		    "commands":{
 			    "01_deploy":{
 					"command" : "/tmp/deploy_application > /home/ec2-user/deploy.log"
-				}			   	   
+				}			
 			}
 		  }
         }
@@ -298,6 +298,11 @@
           "         --resource WebServer ",
           "         --region ", { "Ref" : "AWS::Region" }, "\n"
         ]]}}        
+      },
+	  "CreationPolicy" : {
+        "ResourceSignal" : {
+          "Timeout" : "PT20M"
+        }
       }
     },
     
